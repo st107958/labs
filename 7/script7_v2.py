@@ -10,7 +10,7 @@ values = []
 R3 = 12
 T = 297
 
-with open('input.csv') as csvfile:
+with open('input2.csv') as csvfile:
     for i in range(lines_to_skip):
         next(csvfile)
 
@@ -56,13 +56,12 @@ ax.plot(u_eb_values, arr, linewidth=1.2)
 ax.set_ylabel(r'$ lnI_{k} $')
 ax.set_xlabel(r'$ U_{eb} , V $')
 
-plt.savefig('график.png', dpi=600)
+plt.savefig('график2.png', dpi=600)
 plt.show()
 
 
 numbs = np.arange(1, 17)
 result_values = np.hstack((numbs.reshape(-1, 1), u_eb_values.reshape(-1, 1), u_kb_values.reshape(-1, 1), I_k.reshape(-1, 1), ln_I_k.reshape(-1, 1)))
 
-file_path = "result1.csv"
+file_path = "result2.csv"
 np.savetxt(file_path, result_values, delimiter=",")
-

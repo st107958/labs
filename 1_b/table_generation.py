@@ -10,7 +10,7 @@ def format_number4(value):
 
 def format_number8(value):
     try:
-        return f"{float(value):.8f}"
+        return f"{float(value):.10f}"
     except ValueError:
         return str(value)
 

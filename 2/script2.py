@@ -76,5 +76,5 @@ fig2.savefig('график2.png', dpi=600)
 
 plt.show()
 
-print(values_array)
+# print(values_array)
 
