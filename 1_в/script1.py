@@ -20,6 +20,7 @@ with open('input1.csv') as csvfile:
 mean_r1 = np.mean(r_values1)
 delta_r1 = mean_r1 * (2 + (9 / mean_r1)) / 100
 print('Погрешность прибора:', delta_r1)
+print('Среднее:', mean_r1)
 
 delta_arr = np.full(10, delta_r1)
 numbs1 = np.arange(1, 11)
@@ -43,6 +44,7 @@ with open('input2.csv') as csvfile:
 mean_r2 = np.mean(r_values2)
 delta_r2 = mean_r2 * (2 + (9 / mean_r2)) / 100
 print('Погрешность прибора:', delta_r2)
+print('Среднее:', mean_r2)
 
 for k in range(len(r_values2)):
     d = np.append(d, r_values2[k] - mean_r2)

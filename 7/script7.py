@@ -9,6 +9,7 @@ values = []
 
 R3 = 12
 T = 297
+dT = 0.5
 
 with open('input.csv') as csvfile:
     for i in range(lines_to_skip):
@@ -24,7 +25,7 @@ u_eb_values = values_array[:,0]
 u_kb_values = values_array[:,1]
 
 I_k = u_kb_values / R3
-ln_I_k = np.log10(I_k)
+ln_I_k = np.log(I_k)
 
 half_length = len(u_eb_values) // 2
 
@@ -37,23 +38,31 @@ pars[:, 4] = pars[:, 0] - pars[:, 1]
 pars[:, 5] = pars[:, 2] - pars[:, 3]
 pars[:, 6] = pars[:, 5] / pars[:, 4]
 
-k = np.mean(pars[:, 6])
-a = math.atan(k)
-dK = 1.9*(np.std(pars[:, 6]))/(math.sqrt(8))
-dT = 0.5
-dB = math.sqrt((1/9) * ((k/0.434*dT)**2) + ((T/0.434 * dK) ** 2))
-x_average = sum(u_eb_values)/16
-y_average = sum(ln_I_k)/16
-ln_I_0 = y_average - k * x_average
+tg = np.mean(pars[:, 6])
+a = math.atan(tg)
+print('Среднее значение', tg)
+print('Коэффициент Стьюдента', 2.36)
 
-arr = u_eb_values*k + ln_I_0
+print('Тангенс', tg)
+dA = math.sqrt(np.sum((pars[:, 6] - tg)**2)/(len(pars[:, 6])*(len(pars[:, 6])-1)))
+print('Стандартная погрешность', dA)
+dB = math.sqrt((1/9) * ((tg * dT) ** 2) + ((T * dA) ** 2))
+
+print('отношение заряда к пост больцмана', T * tg)
+print('Погрешность косвенных измерений', dB)
+u_eb_average = sum(u_eb_values) / 16
+ln_I_k_average = sum(ln_I_k) / 16
+ln_I_0 = ln_I_k_average - tg * u_eb_average
+print('дельта тангенс', dA * 2.36)
+arr = u_eb_values * tg + ln_I_0
+I_0 = math.exp(ln_I_0)
 
 fig, ax = plt.subplots()
 
 ax.scatter(u_eb_values, ln_I_k)
 ax.plot(u_eb_values, arr, linewidth=1.2)
 
-ax.set_ylabel(r'$ lnI_{k} $')
+ax.set_ylabel(r'$ lnI_{tg} $')
 ax.set_xlabel(r'$ U_{eb} , V $')
 
 plt.savefig('график.png', dpi=600)

@@ -12,12 +12,14 @@ def format_number(value):
 df1 = pd.read_csv('result1.csv', header=None)
 df2 = pd.read_csv('result2.csv', header=None)
 df3 = pd.read_csv('result3.csv', header=None)
+
 doc = Document()
 table1 = doc.add_table(rows=1, cols=len(df1.columns))
 doc.add_paragraph("\n")
 table2 = doc.add_table(rows=1, cols=len(df2.columns))
 doc.add_paragraph("\n")
 table3 = doc.add_table(rows=1, cols=len(df3.columns))
+doc.add_paragraph("\n")
 
 column_names1 = ['Длина линии на экране', 'Эффективное напряжение (U_eff), В', 'Чувствительность (L), мм/В']
 
@@ -51,4 +53,3 @@ for index, row in df3.iterrows():
 
 doc_file = 'output.docx'
 doc.save(doc_file)
-

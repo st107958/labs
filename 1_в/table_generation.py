@@ -2,9 +2,15 @@ import pandas as pd
 from docx import Document
 
 
-def format_number(value):
+def format_number2(value):
     try:
         return f"{float(value):.2f}"
+    except ValueError:
+        return str(value)
+
+def format_number8(value):
+    try:
+        return f"{float(value):.8f}"
     except ValueError:
         return str(value)
 
@@ -29,7 +35,7 @@ for i, column_name in enumerate(column_names1):
 for index, row in df1.iterrows():
     row_cells = table1.add_row().cells
     for i, cell_value in enumerate(row):
-        row_cells[i].text = format_number(cell_value)
+        row_cells[i].text = format_number2(cell_value)
 
 header_cells2 = table2.rows[0].cells
 for i, column_name in enumerate(column_names2):
@@ -38,7 +44,7 @@ for i, column_name in enumerate(column_names2):
 for index, row in df2.iterrows():
     row_cells = table2.add_row().cells
     for i, cell_value in enumerate(row):
-        row_cells[i].text = format_number(cell_value)
+        row_cells[i].text = format_number8(cell_value)
 
 header_cells3 = table3.rows[0].cells
 for i, column_name in enumerate(column_names3):
@@ -47,7 +53,7 @@ for i, column_name in enumerate(column_names3):
 for index, row in df3.iterrows():
     row_cells = table3.add_row().cells
     for i, cell_value in enumerate(row):
-        row_cells[i].text = format_number(cell_value)
+        row_cells[i].text = format_number2(cell_value)
 
 
 doc_file = 'output.docx'
