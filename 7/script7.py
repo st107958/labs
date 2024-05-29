@@ -21,10 +21,10 @@ with open('input.csv') as csvfile:
 
 values_array = np.array(values)
 
-u_eb_values = values_array[:,0]
-u_kb_values = values_array[:,1]
+u_eb_values = values_array[:, 0]
+u_kb_values = values_array[:, 1]
 
-I_k = u_kb_values / R3
+I_k = u_kb_values / R3 * 1000
 ln_I_k = np.log(I_k)
 
 half_length = len(u_eb_values) // 2
@@ -62,10 +62,10 @@ fig, ax = plt.subplots()
 ax.scatter(u_eb_values, ln_I_k)
 ax.plot(u_eb_values, arr, linewidth=1.2)
 
-ax.set_ylabel(r'$ lnI_{tg} $')
+ax.set_ylabel(r'$ lnI_{k} $')
 ax.set_xlabel(r'$ U_{eb} , V $')
 
-plt.savefig('график.png', dpi=600)
+plt.savefig('график1.png', dpi=600)
 plt.show()
 
 
