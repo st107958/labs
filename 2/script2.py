@@ -63,8 +63,8 @@ np.savetxt(file_path3, result_values3, delimiter=",")
 fig1, ax1 = plt.subplots()
 fig2, ax2 = plt.subplots()
 
-ax1.scatter(uv_values, s_y)
-ax2.scatter(ug_values, s_x)
+ax1.errorbar(uv_values, s_y, yerr=dy, fmt='o')
+ax2.errorbar(ug_values, s_x, yerr=dx, fmt='o')
 
 ax1.set_ylabel(r'$ S_y , mm / V $')
 ax2.set_ylabel(r'$ S_x , mm / V $')
