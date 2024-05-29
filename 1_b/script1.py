@@ -80,6 +80,7 @@ u2_left = mean_u2 - sigma_x
 u2_right = mean_u2 + sigma_x
 
 print('Дисперсия:', sigma)
+print('Среднеквадратическая погрешность среднего', sigma_x)
 print('Границы интервала:', u2_left, u2_right)
 
 fig1, hist = plt.subplots()
