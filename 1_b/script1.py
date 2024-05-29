@@ -60,14 +60,14 @@ r_max = np.max(u_values2)
 # print(r_min, r_max)
 
 prop_counts = np.array([])
-counts, bin_edges = np.histogram(u_values2, bins=13)
+counts, bin_edges = np.histogram(u_values2, bins=6)
 for k in range(len(counts)):
     prop_counts = np.append(prop_counts, counts[k] / 50)
 
 # print(counts, bin_edges, prop_counts)
 bin_edges = np.delete(bin_edges, -1)
 
-numbs3 = np.arange(1, 14)
+numbs3 = np.arange(1, 7)
 
 res_values3 = np.hstack((numbs3.reshape(-1,1), bin_edges.reshape(-1,1), counts.reshape(-1,1), prop_counts.reshape(-1,1)))
 
