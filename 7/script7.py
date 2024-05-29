@@ -44,8 +44,8 @@ print('Среднее значение', tg)
 print('Коэффициент Стьюдента', 2.36)
 
 print('Тангенс', tg)
-dA = math.sqrt(np.sum((pars[:, 6] - tg)**2)/(len(pars[:, 6])*(len(pars[:, 6])-1)))
-print('Стандартная погрешность (среднеарифм)', dA)
+dA = math.sqrt(np.sum((pars[:, 6] - tg)**2)/(len(pars[:, 6])))
+print('Стандартная погрешность', dA)
 dB = math.sqrt((1/9) * ((tg * dT) ** 2) + ((T * dA) ** 2))
 
 print('отношение заряда к пост больцмана', T * tg)
