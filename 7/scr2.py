@@ -44,7 +44,7 @@ print('Среднее значение', tg)
 print('Коэффициент Стьюдента', 2.36)
 
 print('Тангенс', tg)
-dA = math.sqrt(np.sum((pars[:, 6] - tg)**2)/(len(pars[:, 6])*(len(pars[:, 6])-1)))
+dA = math.sqrt(np.sum((pars[:, 6] - tg)**2)/(len(pars[:, 6])))
 print('Стандартная погрешность', dA)
 dB = math.sqrt((1/9) * ((tg * dT) ** 2) + ((T * dA) ** 2))
 
@@ -56,6 +56,7 @@ ln_I_0 = ln_I_k_average - tg * u_eb_average
 print('дельта тангенс', dA * 2.36)
 arr = u_eb_values * tg + ln_I_0
 I_0 = math.exp(ln_I_0)
+print(ln_I_0)
 
 fig, ax = plt.subplots()
 
