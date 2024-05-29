@@ -8,7 +8,7 @@ lines_to_skip = 1
 values = []
 
 R3 = 12
-T = 297
+T = 295
 dT = 0.5
 
 with open('input2.csv') as csvfile:
