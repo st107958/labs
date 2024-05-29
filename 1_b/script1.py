@@ -83,7 +83,7 @@ print('Дисперсия:', sigma)
 print('Границы интервала:', u2_left, u2_right)
 
 fig1, hist = plt.subplots()
-plt.hist(u_values2, bins=13)
+plt.hist(u_values2, bins=6)
 
 fig2, ax = plt.subplots()
 ax.scatter(numbs2, u_values2, s=15, color='indigo')
